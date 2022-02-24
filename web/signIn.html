@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validator</title>
+    <link rel="stylesheet" href="styleSignUp.css">
+</head>
+<body>
+    <div class="form-container">
+        <form class="form" id="form">
+            <h1>Register With Us</h1>
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+                <small></small>
+            </div>
+
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter email">
+                <small></small>
+            </div>
+
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <small></small>
+            </div>
+
+            <div class="form-control">
+                <label for="password2">Confirm</label>
+                <input type="password" id="password2" placeholder="Reenter password">
+                <small></small>
+            </div>
+            <button>Submit</button>
+        </form>
+
+    </div>
+    <script>
+        const form = document.getElementById('form')
+        const username = document.getElementById('username')
+        const email = document.getElementById('email')
+        const password = document.getElementById('password')
+        const password2 = document.getElementById('password2')
+
+        form.addEventListener('submit', (e) => {
+            // prevent default flash when submitting the form
+            e.preventDefault()
+            checkRequired([username, email, password, password2])
+            checkLength(username, 3, 20)
+            checkLength(password, 6, 25)
+            checkEmail(email)
+            checkPasswordMatch(password, password2)
+
+        })
+
+        function showError(input, msg) {
+            const formControl = input.parentElement //? .form-control
+            formControl.className = 'form-control error'
+            const small = formControl.querySelector('small')
+            small.innerText = msg
+        }
+
+        function showSuccess(input) {
+            const formControl = input.parentElement //? .form-control
+            formControl.className = 'form-control success'
+
+        }
+
+        //* check required fields
+        function checkRequired(inputArr) {
+            inputArr.forEach(input => {
+                if (input.value.trim() === '') {
+                    showError(input, `${capitalizeFirst(input)} is required`)
+                }
+            });
+        }
+
+        function capitalizeFirst(input) {
+            return input.id.charAt(0).toUpperCase() + input.id.slice(1)
+        }
+
+        function checkLength(input, minL, maxL) {
+            if (input.value.length < minL) {
+                showError(input, `${capitalizeFirst(input)} must be at least ${minL} characters`)
+            } else if (input.value.length > maxL) {
+                showError(input, `${capitalizeFirst(input)} must not exceed ${maxL} characters`)
+            } else {
+                showSuccess(input)
+            }
+        }
+
+        function checkEmail(input) {
+            const regex =
+                /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            if (regex.test(input.value.trim())) {
+                showSuccess(input)
+            } else {
+                showError(input, 'Email is not valid')
+            }
+        }
+
+        function checkPasswordMatch(p1, p2) {
+            if (p1.value !== p2.value) {
+                showError(p2, 'Passwords do not match')
+            } else {
+                showSuccess(p2)
+            }
+        }
+
+
+    </script>
+</body>
+</html>
