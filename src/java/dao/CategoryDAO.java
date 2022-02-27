@@ -22,15 +22,18 @@ import model.Category;
 public class CategoryDAO {
 
     public List<Category> getAllCategories() {
-        List <Category> list = new ArrayList<>();
+        List<Category> list = new ArrayList<>();
         try {
             String query = "select * from Categories";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
-                Category category = new Category(rs.getInt(1), rs.getString(2));
+//                Category category = new Category(rs.getInt(1), rs.getString(2));
+                Category category = Category.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2)).build();
                 list.add(category);
             }
         } catch (Exception ex) {
@@ -38,5 +41,5 @@ public class CategoryDAO {
         }
         return list;
     }
-    
+
 }

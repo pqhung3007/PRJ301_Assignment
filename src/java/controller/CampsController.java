@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.CampDAO;
 import dao.CategoryDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Camp;
 import model.Category;
 
 /**
@@ -27,6 +29,7 @@ public class CampsController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<Category> categoryList = new CategoryDAO().getAllCategories();
+        List<Camp> campList = new CampDAO().getAllCamps();
         request.setAttribute("categoryList", categoryList);
         request.getRequestDispatcher("campsites.jsp").forward(request, response);
     }

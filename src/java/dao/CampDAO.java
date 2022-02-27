@@ -3,25 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
-
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+package dao;
 
 /**
  *
  * @author Administrator
  */
-
-@Builder
-@Getter
-@Setter
-@ToString
-
-public class Category {
-    private int id;
-    private String name;
-
+public class CampDAO {
+    
 }

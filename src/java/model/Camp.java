@@ -20,8 +20,12 @@ import lombok.ToString;
 @Setter
 @ToString
 
-public class Category {
+public class Camp {
     private int id;
     private String name;
-
+    private double price;
+    private String description;
+    private String imageUrl;
+    private String createdDate;
+    private int categoryId;
 }
