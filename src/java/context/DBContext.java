@@ -26,9 +26,14 @@ public class DBContext {
 
     public static void main(String[] args) {
         try {
-            System.out.println(new DBContext().getConnection());
+            DBContext dbc = new DBContext();
+            if (dbc.getConnection() != null) {
+            System.out.println("Connect successfully");
+            } else {
+                System.out.println("Connect failed");
+            }
         } catch (Exception e) {
-            System.out.println("Connection failed");
+
         }
     }
 }
