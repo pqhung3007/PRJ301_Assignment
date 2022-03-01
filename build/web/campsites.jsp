@@ -18,7 +18,7 @@
         <h1>Camp Sites</h1>
         <ul>
             <c:forEach items="${categoryList}" var="C">
-                <li>${C.name}</li>
+                <li><a href="filter-category?categoryId=${C.id}">${C.name}</a></li>
                 </c:forEach>
         </ul>
 

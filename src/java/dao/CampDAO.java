@@ -48,4 +48,31 @@ public class CampDAO {
         return list;
     }
 
+    public List<Camp> getCampsByCategory(int categoryId) {
+        List<Camp> list = new ArrayList<>();
+        try {
+            String query = "select * from Camp where Camp.CategoryID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+//                Category category = new Category(rs.getInt(1), rs.getString(2));
+                Camp camp = Camp.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2))
+                        .price(rs.getDouble(3))
+                        .description(rs.getString(4))
+                        .imageUrl(rs.getString(5))
+                        .createdDate(rs.getString(6))
+                        .categoryId(rs.getInt(7)).build();
+                list.add(camp);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
 }
