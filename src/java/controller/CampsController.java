@@ -30,25 +30,30 @@ public class CampsController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         List<Category> categoryList = new CategoryDAO().getAllCategories();
         List<Camp> campList = new CampDAO().getAllCamps();
-        request.setAttribute("categoryList", categoryList);
-        request.setAttribute("campList", campList);
+        
+        int page = 1;
+        int pageSize = 4;
+        String pageStr = request.getParameter("page");
+        if (pageStr!=null) {
+            page = Integer.parseInt(pageStr);
+        }
+        request.setAttribute("campList", campList.subList((page - 1) * pageSize, page * pageSize));
         request.getRequestDispatcher("campsites.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";
