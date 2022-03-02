@@ -22,6 +22,30 @@ import model.Category;
  */
 public class CampDAO {
 
+    public List<Camp> getAllCamps() {
+        List<Camp> list = new ArrayList<>();
+        try {
+            String sql = "select * from Camp";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Camp product = Camp.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2))
+                        .price(rs.getDouble(3))
+                        .description(rs.getString(4))
+                        .imageUrl(rs.getString(5))
+                        .createdDate(rs.getString(6))
+                        .categoryId(rs.getInt(7)).build();
+                list.add(product);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
     public List<Camp> getCampsByCategory(int categoryId) {
         List<Camp> list = new ArrayList<>();
         try {
@@ -76,7 +100,7 @@ public class CampDAO {
         }
         return list;
     }
-    
+
     public int getTotalCamps() {
         try {
             String query = "select count(*) from Camp";
@@ -91,6 +115,33 @@ public class CampDAO {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+
+    public List<Camp> getSearchResults(String keyword) {
+        List<Camp> list = new ArrayList<>();
+
+        try {
+            String query = "select * from Camp where CampName like ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + keyword + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Camp camp = Camp.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2))
+                        .price(rs.getDouble(3))
+                        .description(rs.getString(4))
+                        .imageUrl(rs.getString(5))
+                        .createdDate(rs.getString(6))
+                        .categoryId(rs.getInt(7)).build();
+                list.add(camp);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
 }

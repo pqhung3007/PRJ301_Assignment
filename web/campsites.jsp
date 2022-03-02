@@ -22,45 +22,60 @@
                 </c:forEach>
         </ul>
 
-        <nav aria-label="Page navigation example" class=" d-flex justify-content-center mt-3">
-            <ul class="pagination">
-                <li class="page-item ${page lt 1 ? "disabled" : ""}">
-                    <a class="page-link" href="campsites?page=${page-1}">Previous</a>
-                </li>
-                    <c:forEach begin="1" end="${totalPages}" var="i">
-                    <li class="page-item ${i== page ? "active":""}">
-                        <a class="page-link" href="campsites?page=${i}">${i}</a>
-                    </li>
-                    </c:forEach>
-                <li class="page-item ${page gt totalPages ? "disabled" : ""}">
-                    <a class="page-link" href="campsites?page=${page+1}">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <form action="search" class="d-flex mb-3">
+                    <input class="form-control me-2" type="search" name="keyword" placeholder="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
 
-        <div class="row">
-            <c:forEach items="${campList}" var="cp">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <img src="${cp.imageUrl}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h2 class="card-title">${cp.name}</h2>
-                            <p class="card-text">${cp.description}.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${cp.price}</li>
-                            <li class="list-group-item">${cp.categoryId}</li>
+            <c:choose>
+                <c:when test="${campList == null || campList.size() == 0}">
+                    <h1>Cannot find any camp</h1>
+                </c:when>
+                <c:otherwise>
+                    <nav aria-label="Page navigation example" class=" d-flex justify-content-center mt-3">
+                        <ul class="pagination">
+                            <li class="page-item ${page lt 1 ? "disabled" : ""}">
+                                <a class="page-link" href="campsites?page=${page-1}">Previous</a>
+                            </li>
+                            <c:forEach begin="1" end="${totalPages}" var="i">
+                                <li class="page-item ${i== page ? "active":""}">
+                                    <a class="page-link" href="campsites?page=${i}">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li class="page-item ${page gt totalPages ? "disabled" : ""}">
+                                <a class="page-link" href="campsites?page=${page+1}">Next</a>
+                            </li>
                         </ul>
+                    </nav>
+                </c:otherwise>
+            </c:choose>
+
+            <div class="row">
+                <c:forEach items="${campList}" var="cp">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <img src="${cp.imageUrl}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h2 class="card-title">${cp.name}</h2>
+                                <p class="card-text">${cp.description}.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">${cp.price}</li>
+                                <li class="list-group-item">${cp.categoryId}</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
+
+
+
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
-
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-</body>
+    </body>
 </html>
