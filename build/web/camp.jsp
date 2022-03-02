@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+          <%@include file="components/navBar.jsp" %>
         <h1>Hello World!</h1>
                 <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -28,7 +29,7 @@
                             <h3>Night stay:</h3>
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                         </div>
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <button class="btn btn-outline-success flex-shrink-0" type="button">
                                 Book this camp
                             </button>
                     </div>
@@ -141,6 +142,8 @@
                 </div>
             </div>
         </section>
+        
+        <%@include file="components/footer.jsp" %>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
