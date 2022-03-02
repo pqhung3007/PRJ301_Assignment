@@ -33,7 +33,6 @@ public class FilterCategoryController extends HttpServlet {
             List<Category> categoryList = new CategoryDAO().getAllCategories();
             List<Camp> campList = new CampDAO().getCampsByCategory(categoryId);
 
-            request.setAttribute("categoryList", categoryList);
             request.setAttribute("campList", campList);
             request.getRequestDispatcher("campsites.jsp").forward(request, response);
         }

@@ -18,7 +18,7 @@
           <%@include file="components/navBar.jsp" %>
         <h1>Our Camp Sites</h1>
         <ul>
-            <c:forEach items="${categoryList}" var="C">
+            <c:forEach items="${sessionScope.categoryList}" var="C">
                 <li><a href="filter-category?categoryId=${C.id}">${C.name}</a></li>
                 </c:forEach>
         </ul>

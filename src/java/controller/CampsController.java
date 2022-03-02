@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Camp;
 import model.Category;
 
@@ -29,6 +30,8 @@ public class CampsController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<Category> categoryList = new CategoryDAO().getAllCategories();
+        HttpSession session = request.getSession();
+        session.setAttribute("categoryList", categoryList);
 
         int page = 1;
         int pageSize = 4;
@@ -47,7 +50,6 @@ public class CampsController extends HttpServlet {
 
         request.setAttribute("page", page);
         request.setAttribute("totalPages", totalPages);
-        request.setAttribute("categoryList", categoryList);
         request.setAttribute("campList", campList);
         request.getRequestDispatcher("campsites.jsp").forward(request, response);
     }
