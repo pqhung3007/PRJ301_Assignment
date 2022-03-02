@@ -37,6 +37,8 @@ public class CampsController extends HttpServlet {
         if (pageStr!=null) {
             page = Integer.parseInt(pageStr);
         }
+        
+        request.setAttribute("categoryList", categoryList);
         request.setAttribute("campList", campList.subList((page - 1) * pageSize, page * pageSize));
         request.getRequestDispatcher("campsites.jsp").forward(request, response);
     }
