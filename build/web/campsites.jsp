@@ -61,7 +61,7 @@
                             <div class="card-body">
                                 <h2 class="card-title">${cp.name}</h2>
                                 <p class="card-text">${cp.description}.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="camp?campId=${cp.id}" class="btn btn-primary">Explore</a>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">${cp.price}</li>

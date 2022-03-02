@@ -144,4 +144,29 @@ public class CampDAO {
         return list;
     }
 
+    public Camp getCampById(int campId) {
+        try {
+            String query = "select * from Camp where CampID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, campId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Camp camp = Camp.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2))
+                        .price(rs.getDouble(3))
+                        .description(rs.getString(4))
+                        .imageUrl(rs.getString(5))
+                        .createdDate(rs.getString(6))
+                        .categoryId(rs.getInt(7)).build();
+                return camp;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }
