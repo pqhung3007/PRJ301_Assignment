@@ -22,16 +22,16 @@ import model.Category;
  */
 public class CampDAO {
 
-    public List<Camp> getAllCamps() {
+    public List<Camp> getCampsByCategory(int categoryId) {
         List<Camp> list = new ArrayList<>();
         try {
-            String query = "select * from Camp";
+            String query = "select * from Camp where Camp.CategoryID = ?";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, categoryId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-//                Category category = new Category(rs.getInt(1), rs.getString(2));
                 Camp camp = Camp.builder()
                         .id(rs.getInt(1))
                         .name(rs.getString(2))
@@ -48,17 +48,19 @@ public class CampDAO {
         return list;
     }
 
-    public List<Camp> getCampsByCategory(int categoryId) {
+    public List<Camp> getCampsWithPaging(int page, int pageSize) {
         List<Camp> list = new ArrayList<>();
         try {
-            String query = "select * from Camp where Camp.CategoryID = ?";
+            String query = "select * from Camp order by CampID\n"
+                    + "offset (?-1)*? row fetch next ? rows only";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, categoryId);
+            ps.setInt(1, page);
+            ps.setInt(2, pageSize);
+            ps.setInt(3, pageSize);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-//                Category category = new Category(rs.getInt(1), rs.getString(2));
                 Camp camp = Camp.builder()
                         .id(rs.getInt(1))
                         .name(rs.getString(2))

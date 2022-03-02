@@ -29,7 +29,6 @@ public class CampsController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<Category> categoryList = new CategoryDAO().getAllCategories();
-        List<Camp> campList = new CampDAO().getAllCamps();
         
         int page = 1;
         int pageSize = 4;
@@ -38,8 +37,9 @@ public class CampsController extends HttpServlet {
             page = Integer.parseInt(pageStr);
         }
         
+        List<Camp> campList = new CampDAO().getCampsWithPaging(page, pageSize);
         request.setAttribute("categoryList", categoryList);
-        request.setAttribute("campList", campList.subList((page - 1) * pageSize, page * pageSize));
+        request.setAttribute("campList", campList);
         request.getRequestDispatcher("campsites.jsp").forward(request, response);
     }
 
