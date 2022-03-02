@@ -76,5 +76,21 @@ public class CampDAO {
         }
         return list;
     }
+    
+    public int getTotalCamps() {
+        try {
+            String query = "select count(*) from Camp";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 
 }

@@ -22,6 +22,18 @@
                 </c:forEach>
         </ul>
 
+        <nav aria-label="Page navigation example" class=" d-flex justify-content-center mt-3">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="campsites?page=${page-1}">Previous</a></li>
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                    <li class="page-item ${i== page ? "active":""}">
+                        <a class="page-link" href="campsites?page=${i}">${i}</a>
+                    </li>
+                    </c:forEach>
+                <li class="page-item"><a class="page-link" href="campsites?page=${page+1}">Next</a></li>
+            </ul>
+        </nav>
+
         <div class="row">
             <c:forEach items="${campList}" var="cp">
                 <div class="col-sm-6">
@@ -41,15 +53,6 @@
             </c:forEach>
         </div>
 
-        <nav aria-label="Page navigation example" class=" d-flex justify-content-center mt-3">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="campsites?page=1">1</a></li>
-                <li class="page-item"><a class="page-link" href="campsites?page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="campsites?page=3">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
 
 
     </div>

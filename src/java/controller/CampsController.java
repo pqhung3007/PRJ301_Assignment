@@ -24,20 +24,29 @@ import model.Category;
  */
 @WebServlet(name = "CampsController", urlPatterns = {"/campsites"})
 public class CampsController extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<Category> categoryList = new CategoryDAO().getAllCategories();
-        
+
         int page = 1;
         int pageSize = 4;
         String pageStr = request.getParameter("page");
-        if (pageStr!=null) {
+        if (pageStr != null) {
             page = Integer.parseInt(pageStr);
         }
-        
-        List<Camp> campList = new CampDAO().getCampsWithPaging(page, pageSize);
+
+        CampDAO campDAO = new CampDAO();
+        List<Camp> campList = campDAO.getCampsWithPaging(page, pageSize);
+        int totalCamps = campDAO.getTotalCamps();
+        int totalPages = totalCamps / pageSize;
+        if (totalPages % pageSize != 0) {
+            totalPages += 1;
+        }
+
+        request.setAttribute("page", page);
+        request.setAttribute("totalPages", totalPages);
         request.setAttribute("categoryList", categoryList);
         request.setAttribute("campList", campList);
         request.getRequestDispatcher("campsites.jsp").forward(request, response);
@@ -49,13 +58,13 @@ public class CampsController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
