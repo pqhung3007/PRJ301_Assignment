@@ -8,7 +8,9 @@ package controller;
 import dao.CampDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,33 +25,31 @@ import model.Camp;
  *
  * @author Administrator
  */
-@WebServlet(name = "BookController", urlPatterns = {"/book"})
-public class BookController extends HttpServlet {
-
+@WebServlet(name = "BookingController", urlPatterns = {"/book"})
+public class BookingController extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int campId = Integer.parseInt(request.getParameter("campId"));
-
         HttpSession session = request.getSession();
-        Map<Integer, Booking> bookings = (Map<Integer, Booking>) session.getAttribute("bookings");
-        if (bookings == null) {
-            bookings = new LinkedHashMap<>();
-        }
         
-        // camp has already booked
-        if (bookings.containsKey(campId)) {
-            int oldQuantity = bookings.get(campId).getNumOfPerson();
-            bookings.get(campId).setNumOfPerson(oldQuantity+1);
-        } else {// camp hasn't booked yet
-            Camp camp = new CampDAO().getCampById(campId);
-            bookings.put(campId, Booking.builder().camp(camp).numOfPerson(1).build());
+        Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
+        if (booking==null) {
+            booking = new LinkedHashMap<>();
         }
-        
-        // save booking to session
-        session.setAttribute("bookings", bookings);
-        System.out.println(bookings);
-        response.sendRedirect("camp?campId="+campId);
+        Camp camp = new CampDAO().getCampById(campId);
+        booking.put(campId, Booking.builder()
+                .camp(camp)
+                .numOfPerson(2)
+                .build());
+
+        request.setAttribute("book", booking);
+        System.out.println(booking);
+
+//        Camp camp = new CampDAO().getCampById(campId);
+//        request.setAttribute("book", camp);
+        request.getRequestDispatcher("bookings.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,7 +78,6 @@ public class BookController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
