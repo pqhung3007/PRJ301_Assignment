@@ -14,8 +14,8 @@
     </head>
     <body>
           <%@include file="components/navBar.jsp" %>
-        <h1>Hello World!</h1>
                 <section class="py-5">
+        <h1>Hello World!</h1>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${camp.imageUrl}" alt="..." /></div>
@@ -27,7 +27,9 @@
                         <p class="lead">${camp.description}</p>
                         <div class="d-flex my-2">
                             <h3>Number of Person:</h3>
-                            <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+                            <form action="book" method="post">
+                            <input name="person" class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+                        </form>
                         </div>
                         <a class="btn btn-outline-success flex-shrink-0" type="button" href="book?campId=${camp.id}">
                                 Book this camp
