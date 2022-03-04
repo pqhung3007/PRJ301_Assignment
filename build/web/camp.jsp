@@ -26,12 +26,12 @@
                         </div>
                         <p class="lead">${camp.description}</p>
                         <div class="d-flex my-2">
-                            <h3>Night stay:</h3>
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                            <h3>Number of Person:</h3>
+                            <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
                         </div>
-                            <button class="btn btn-outline-success flex-shrink-0" type="button">
+                        <a class="btn btn-outline-success flex-shrink-0" type="button" href="book?campId=${camp.id}">
                                 Book this camp
-                            </button>
+                            </a>
                     </div>
                 </div>
             </div>
