@@ -5,12 +5,9 @@
  */
 package controller;
 
-import dao.CampDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,38 +16,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Booking;
-import model.Camp;
 
 /**
  *
  * @author Administrator
  */
-@WebServlet(name = "BookingController", urlPatterns = {"/book"})
-public class BookingController extends HttpServlet {
+@WebServlet(name = "DeleteBookingController", urlPatterns = {"/delete-booking"})
+public class DeleteBookingController extends HttpServlet {
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int campId = Integer.parseInt(request.getParameter("campId"));
+        
         HttpSession session = request.getSession();
-
         Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
         if (booking == null) {
             booking = new LinkedHashMap<>();
         }
+        if (booking.containsKey(campId)) {
+            booking.remove(campId);
+        }
         
-        Camp camp = new CampDAO().getCampById(campId);
-        booking.put(campId, Booking.builder()
-                .camp(camp)
-                .numOfPerson(2)
-                .build());
-
-        session.setAttribute("book", booking);
         System.out.println(booking);
-
-//        Camp camp = new CampDAO().getCampById(campId);
-//        request.setAttribute("book", camp);
-        request.getRequestDispatcher("bookings.jsp").forward(request, response);
+     
+        session.setAttribute("book", booking);
+        response.sendRedirect("campsites");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -79,8 +71,7 @@ public class BookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String person = request.getParameter("person");
-        System.out.println(person);
+        processRequest(request, response);
     }
 
     /**

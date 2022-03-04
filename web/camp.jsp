@@ -13,27 +13,28 @@
         <title>JSP Page</title>
     </head>
     <body>
-          <%@include file="components/navBar.jsp" %>
-                <section class="py-5">
-        <h1>Hello World!</h1>
+        <%@include file="components/navBar.jsp" %>
+        <section class="py-5">
+            <h1>Hello World!</h1>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${camp.imageUrl}" alt="..." /></div>
                     <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">${camp.name}</h1>
-                        <div class="fs-5 mb-5">
-                            <span>${camp.price}</span>
-                        </div>
-                        <p class="lead">${camp.description}</p>
-                        <div class="d-flex my-2">
-                            <h3>Number of Person:</h3>
-                            <form action="book" method="post">
-                            <input name="person" class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
-                        </form>
-                        </div>
-                        <a class="btn btn-outline-success flex-shrink-0" type="button" href="book?campId=${camp.id}">
+                        <form action="book">
+                            <h1 class="display-5 fw-bolder">${camp.name}</h1>
+                            <div class="fs-5 mb-5">
+                                <span>${camp.price}</span>
+                            </div>
+                            <p class="lead">${camp.description}</p>
+                            <div class="d-flex my-2">
+                                <h3>Number of Person:</h3>
+                                <input name="person" class="form-control text-center me-3" 
+                                       id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+                            </div>
+                            <a class="btn btn-outline-success flex-shrink-0" type="button" href="book?campId=${camp.id}">
                                 Book this camp
                             </a>
+                        </form> 
                     </div>
                 </div>
             </div>
@@ -144,8 +145,8 @@
                 </div>
             </div>
         </section>
-        
+
         <%@include file="components/footer.jsp" %>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
