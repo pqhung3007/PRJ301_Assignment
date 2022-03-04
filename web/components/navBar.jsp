@@ -30,6 +30,15 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                
+                <div class="d-flex my-2">
+                <a class="btn btn-outline-dark" href="book">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.book.size()}</span>
+                </a>
+            </div>
+            <button class="btn btn-outline-primary ms-lg-2">Login</button>
             </div>
 
         </div>

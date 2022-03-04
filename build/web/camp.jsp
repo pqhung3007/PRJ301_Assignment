@@ -31,7 +31,7 @@
                                 <input name="person" class="form-control text-center me-3" 
                                        id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
                             </div>
-                            <a class="btn btn-outline-success flex-shrink-0" type="button" href="book?campId=${camp.id}">
+                            <a class="btn btn-outline-success flex-shrink-0" type="button" href="add-to-booking?campId=${camp.id}">
                                 Book this camp
                             </a>
                         </form> 

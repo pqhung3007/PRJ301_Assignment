@@ -8,9 +8,7 @@ package controller;
 import dao.CampDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,22 +23,14 @@ import model.Camp;
  *
  * @author Administrator
  */
-@WebServlet(name = "BookingController", urlPatterns = {"/book"})
-public class BookingController extends HttpServlet {
+@WebServlet(name = "CheckoutController", urlPatterns = {"/checkout"})
+public class CheckoutController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
-        Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
-        if (booking == null) {
-            booking = new LinkedHashMap<>();
-        }
-       
-        System.out.println(booking);
-        session.setAttribute("book", booking);
-        request.getRequestDispatcher("bookings.jsp").forward(request, response);
+      
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,8 +59,7 @@ public class BookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String person = request.getParameter("person");
-        System.out.println(person);
+        processRequest(request, response);
     }
 
     /**
