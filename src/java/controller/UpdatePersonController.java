@@ -5,7 +5,6 @@
  */
 package controller;
 
-import dao.CampDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
@@ -17,41 +16,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Booking;
-import model.Camp;
 
 /**
  *
  * @author Administrator
  */
-@WebServlet(name = "AddToBookingController", urlPatterns = {"/add-to-booking"})
-public class AddToBookingController extends HttpServlet {
+@WebServlet(name = "UpdatePersonController", urlPatterns = {"/update-person"})
+public class UpdatePersonController extends HttpServlet {
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int campId = Integer.parseInt(request.getParameter("campId"));
-
+            int person = Integer.parseInt(request.getParameter("person"));
+            
             HttpSession session = request.getSession();
             Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
             if (booking == null) {
                 booking = new LinkedHashMap<>();
             }
-
-            if (booking.containsKey(campId)) {//sản phẩm đã có trên giỏ hàng
-                int oldNumOfPerson = booking.get(campId).getNumOfPerson();
-                booking.get(campId).setNumOfPerson(oldNumOfPerson + 1);
-            } else {
-                Camp camp = new CampDAO().getCampById(campId);
-                booking.put(campId, Booking.builder()
-                        .camp(camp)
-                        .numOfPerson(1)
-                        .build());
-
-                //lưu booking lên session
-                session.setAttribute("book", booking);
-                response.sendRedirect("camp?campId=" + campId);
+            
+            if (booking.containsKey(campId)) {
+                booking.get(campId).setNumOfPerson(person);
             }
+            
+            session.setAttribute("book", booking);
+            response.sendRedirect("book");
         }
     }
 
