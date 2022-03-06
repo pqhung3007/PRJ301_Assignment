@@ -9,6 +9,6 @@ package dao;
  *
  * @author Administrator
  */
-public class ReservationDAO {
+public class ReservationDetailDAO {
     
 }

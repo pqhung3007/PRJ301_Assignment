@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dao.ReservationDAO;
+import dao.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Booking;
-import model.Reservation;
+import model.Customer;
 
 /**
  *
@@ -61,12 +61,17 @@ public class CheckoutController extends HttpServlet {
         String address = request.getParameter("address");
         String note = request.getParameter("note");
         
-        Reservation res = Reservation.builder()
+        //save customer
+        Customer customer = Customer.builder()
                 .name(name)
                 .phone(phone)
                 .address(address)
                 .build();
-        int reservationId = new ReservationDAO().createReservation(res);
+        int reservationId = new CustomerDAO().createReservation(customer);
+        
+        //save reservations
+        
+        //save reservation detail
     }
 
     /**

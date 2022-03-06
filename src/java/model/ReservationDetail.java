@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package model;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,11 +18,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Reservation {
+public class ReservationDetail {
     private int id;
-    private int accountId;
-    private double totalPrice;
-    private String note;
-    private String createdDate; 
-    private int customerId;
+    private int reservationId;
+    private String campName;
+    private String campImage;
+    private double campPrice;
+    private int numberOfPerson;
 }

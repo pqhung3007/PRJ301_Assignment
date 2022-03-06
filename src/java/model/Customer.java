@@ -19,11 +19,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Reservation {
+public class Customer {
     private int id;
-    private int accountId;
-    private double totalPrice;
-    private String note;
-    private String createdDate; 
-    private int customerId;
+    private String name;
+    private String phone;
+    private String address;
 }
