@@ -71,7 +71,7 @@
     <section class="galleries">
         <h2>Our Camping Sites</h2>
         <div class="images__container">
-            <div class="panel active"
+            <div class="panel"
                 style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
                 <h3>Explore The World</h3>
             </div>

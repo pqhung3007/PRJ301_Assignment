@@ -61,30 +61,9 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        
+                        <a href="checkout" class="btn btn-outline-success">Confirm Booking</a>
 
-                        <div class="d-flex justify-content-center">
-                            <div class="col-md-6" style="border: 1px solid #ccc; border-radius: 5px; padding: 1rem">
-                                <h3>Information of customer</h3>
-                                <form action="checkout" method="POST">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" class="form-control" id="phone" name="phone" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="note" class="form-label">Note</label>
-                                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary w-100">Submit</button>
-                                </form>
-                            </div>
                         </div>
                     </c:otherwise>
                 </c:choose>
