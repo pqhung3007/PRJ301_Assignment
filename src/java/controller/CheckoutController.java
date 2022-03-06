@@ -6,6 +6,8 @@
 package controller;
 
 import dao.CustomerDAO;
+import dao.ReservationDAO;
+import dao.ReservationDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Booking;
 import model.Customer;
+import model.Reservation;
 
 /**
  *
@@ -26,33 +29,30 @@ import model.Customer;
 @WebServlet(name = "CheckoutController", urlPatterns = {"/checkout"})
 public class CheckoutController extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
 
-        Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
-        if (booking == null) {
-            booking = new LinkedHashMap<>();
-        }
-       
-        System.out.println(booking);
-        session.setAttribute("book", booking);
-        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
+            if (booking == null) {
+                booking = new LinkedHashMap<>();
+            }
+
+            System.out.println(booking);
+            session.setAttribute("book", booking);
+            request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,18 +60,40 @@ public class CheckoutController extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String note = request.getParameter("note");
-        
+
         //save customer
         Customer customer = Customer.builder()
                 .name(name)
                 .phone(phone)
                 .address(address)
                 .build();
-        int reservationId = new CustomerDAO().createReservation(customer);
-        
+        int customerId = new CustomerDAO().createCustomerId(customer);
+
         //save reservations
-        
+        HttpSession session = request.getSession();
+        Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
+        if (booking == null) {
+            booking = new LinkedHashMap<>();
+        }
+        double total = 0;
+        for (Map.Entry<Integer, Booking> entry : booking.entrySet()) {
+            Integer key = entry.getKey();
+            Booking b = entry.getValue();
+            total += b.getNumOfPerson() * b.getCamp().getPrice();
+        }
+
+        Reservation reservation = Reservation.builder()
+                .accountId(1)
+                .totalPrice(total)
+                .note(note)
+                .accountId(customerId)
+                .build();
+        int reservationId = new ReservationDAO().createReservationId(reservation);
+
         //save reservation detail
+        new ReservationDetailDAO().saveBooking(reservationId, booking);
+        
+        response.sendRedirect("thankyou");
     }
 
     /**

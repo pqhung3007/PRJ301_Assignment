@@ -20,7 +20,7 @@ import model.Customer;
  */
 public class CustomerDAO {
 
-    public int createReservation(Customer customer) {
+    public int createCustomerId(Customer customer) {
         try {
             String query = "INSERT INTO [dbo].[Customer]\n"
                     + "           ([name]\n"

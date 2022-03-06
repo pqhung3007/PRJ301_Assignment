@@ -37,7 +37,7 @@ public class BookingController extends HttpServlet {
         if (booking == null) {
             booking = new LinkedHashMap<>();
         }
-       
+        
         System.out.println(booking);
         session.setAttribute("book", booking);
         request.getRequestDispatcher("bookings.jsp").forward(request, response);
