@@ -60,7 +60,7 @@ public class CheckoutController extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String note = request.getParameter("note");
-
+        
         //save customer
         Customer customer = Customer.builder()
                 .name(name)
@@ -68,7 +68,7 @@ public class CheckoutController extends HttpServlet {
                 .address(address)
                 .build();
         int customerId = new CustomerDAO().createCustomerId(customer);
-
+        
         //save reservations
         HttpSession session = request.getSession();
         Map<Integer, Booking> booking = (Map<Integer, Booking>) session.getAttribute("book");
@@ -86,13 +86,15 @@ public class CheckoutController extends HttpServlet {
                 .accountId(1)
                 .totalPrice(total)
                 .note(note)
-                .accountId(customerId)
+                .customerId(customerId)
                 .build();
+        
         int reservationId = new ReservationDAO().createReservationId(reservation);
 
         //save reservation detail
         new ReservationDetailDAO().saveBooking(reservationId, booking);
         
+        session.removeAttribute("book");
         response.sendRedirect("thankyou");
     }
 

@@ -24,7 +24,7 @@ public class ReservationDetailDAO {
     public void saveBooking(int reservationId, Map<Integer, Booking> booking) {
         try {
             String query = "INSERT INTO [dbo].[ReservationDetail]\n"
-                    + "           ([order_id]\n"
+                    + "           ([reservation_id]\n"
                     + "           ,[campName]\n"
                     + "           ,[campImage]\n"
                     + "           ,[campPrice]\n"
