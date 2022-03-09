@@ -9,6 +9,7 @@ import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -167,6 +168,29 @@ public class CampDAO {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void createNewCamp(String name, String description, String image, int category) {
+        try {
+            String query = "INSERT INTO [dbo].[Camp]\n"
+                    + "           ([CampID]\n"
+                    + "           ,[CampName]\n"
+                    + "           ,[Description]\n"
+                    + "           ,[ImageUrl]\n"
+                    + "           ,[CategoryID])\n"
+                    + "     VALUES\n"
+                    + "           (?,?,?,?,?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, 17);
+            ps.setString(2, name);
+            ps.setString(3, description);
+            ps.setString(4, image);
+            ps.setInt(5, category);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
     }
 
 }
