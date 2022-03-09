@@ -8,6 +8,7 @@ package controller;
 import dao.CampDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +29,10 @@ public class CampItemController extends HttpServlet {
         int campId = Integer.parseInt(request.getParameter("campId"));
         
         Camp camp = new CampDAO().getCampById(campId);
+        List<Camp> campList = new CampDAO().getAllCamps();
         
         request.setAttribute("camp", camp);
+        request.setAttribute("campList", campList);
         request.getRequestDispatcher("camp.jsp").forward(request, response);
     }
 
