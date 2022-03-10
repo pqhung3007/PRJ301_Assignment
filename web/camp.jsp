@@ -16,7 +16,6 @@
     <body>
         <%@include file="components/navBar.jsp" %>
         <section class="py-5">
-            <h1>Hello World!</h1>
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${camp.imageUrl}" alt="..." /></div>
@@ -47,7 +46,7 @@
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <c:forEach begin="9" end="12" var="cp" items="${campList}">
                         <div class="col mb-5">
-                            <div class="card h-100">
+                            <div class="card h-100" style="border-radius: 10px">
                                 <!-- Product image-->
                                 <img class="card-img-top" src="${cp.imageUrl}" alt="..." />
                                 <!-- Product details-->
