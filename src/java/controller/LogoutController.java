@@ -39,6 +39,8 @@ public class LogoutController extends HttpServlet {
                 }
             }
             
+            // delete booking when logging out
+            request.getSession().removeAttribute("book");
             response.sendRedirect("login");
         }
     }
