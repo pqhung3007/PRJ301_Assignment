@@ -23,8 +23,8 @@
     <!-- COVER -->
     <div class="hero">
         <div class="container">
-            <h1>Welcome to Camping Paradise</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, consequuntur?</p>
+            <h1 id="text">Welcome to Camping Paradise</h1>
+            <p>Jump right in and explore out many campgrounds <br> Hope you would find tranquility there!</p>
         </div>
     </div>
 
@@ -72,24 +72,24 @@
         <h2>Our Camping Sites</h2>
         <div class="images__container">
             <div class="panel"
-                style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-                <h3>Explore The World</h3>
+                style="background-image: url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')">
+                <h3>Nova Scotia Paradise</h3>
             </div>
             <div class="panel"
-                style="background-image: url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-                <h3>Wild Forest</h3>
+                style="background-image: url('https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')">
+                <h3>Peaceable Gardening</h3>
             </div>
             <div class="panel"
-                style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80')">
-                <h3>Sunny Beach</h3>
+                style="background-image: url('https://images.unsplash.com/photo-1623072932867-80d024272cb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80')">
+                <h3>The Brilliant Blossoms</h3>
             </div>
             <div class="panel"
-                style="background-image: url('https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80')">
-                <h3>City on Winter</h3>
+                style="background-image: url('https://images.unsplash.com/photo-1606402179428-a57976d71fa4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80')">
+                <h3>Hanoi Travellers</h3>
             </div>
             <div class="panel"
-                style="background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-                <h3>Mountains - Clouds</h3>
+                style="background-image: url('https://images.unsplash.com/photo-1525811902-f2342640856e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80')">
+                <h3>Hanoi Bed and Breakfast</h3>
             </div>
         </div>
 

@@ -1,3 +1,21 @@
+// AUTO TEXT EFFECT
+const textEl = document.querySelector('#text')
+const text = 'Welcome to Camping Paradise'
+let index = 1
+let speed = 200
+
+const writeText = () => {
+    textEl.innerText = text.slice(0, index)
+    index++
+
+    if (index > text.length) {
+        index = 1;
+    }
+    setTimeout(writeText, speed)
+}
+writeText()
+
+// SLIDER COMPONENT 
 const panels = document.querySelectorAll('.panel')
 
 panels.forEach(panel => {
@@ -26,25 +44,25 @@ const slider = function () {
     const createDots = function () {
         slides.forEach(function (_, i) {
             dotContainer.insertAdjacentHTML(
-                'beforeend',
-                `<button class="dots__dot" data-slide="${i}"></button>`
-            );
+                    'beforeend',
+                    `<button class="dots__dot" data-slide="${i}"></button>`
+                    );
         });
     };
 
     const activateDot = function (slide) {
         document
-            .querySelectorAll('.dots__dot')
-            .forEach(dot => dot.classList.remove('dots__dot--active'));
+                .querySelectorAll('.dots__dot')
+                .forEach(dot => dot.classList.remove('dots__dot--active'));
 
         document
-            .querySelector(`.dots__dot[data-slide="${slide}"]`)
-            .classList.add('dots__dot--active');
+                .querySelector(`.dots__dot[data-slide="${slide}"]`)
+                .classList.add('dots__dot--active');
     };
 
     const goToSlide = function (slide) {
         slides.forEach(
-            (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+                (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
         );
     };
 
@@ -83,13 +101,14 @@ const slider = function () {
     btnLeft.addEventListener('click', prevSlide);
 
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowLeft')
+            prevSlide();
         e.key === 'ArrowRight' && nextSlide();
     });
 
     dotContainer.addEventListener('click', function (e) {
         if (e.target.classList.contains('dots__dot')) {
-            const { slide } = e.target.dataset;
+            const {slide} = e.target.dataset;
             goToSlide(slide);
             activateDot(slide);
         }
