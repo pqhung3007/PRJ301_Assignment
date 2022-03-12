@@ -15,6 +15,25 @@ const writeText = () => {
 }
 writeText()
 
+// REVEAL SECTION
+const sections = document.querySelectorAll(".section")
+const revealSections = (entries, observer) =>{
+    const [entry] = entries
+     if (entry.isIntersecting) {
+        entry.target.classList.remove('section-hidden');
+    }
+}
+
+const sectionObserver = new IntersectionObserver(revealSections, {
+    root: null,
+    threshold: 0.15,
+});
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
+    section.classList.add('section-hidden');
+})
+
 // SLIDER COMPONENT 
 const panels = document.querySelectorAll('.panel')
 

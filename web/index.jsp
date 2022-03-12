@@ -24,12 +24,12 @@
     <div class="hero">
         <div class="container">
             <h1 id="text">Welcome to Camping Paradise</h1>
-            <p>Jump right in and explore out many campgrounds <br> Hope you would find tranquility there!</p>
+            <p>Jump right in and explore out many campsites <br> Hope you would find tranquility there!</p>
         </div>
     </div>
 
     <!-- ADVANTAGES -->
-    <section class="details js-section">
+    <section class="details section">
         <h2 class="details__heading">
             We’re different
         </h2>
@@ -68,7 +68,7 @@
     </section>
 
     <!-- CAMPING GALLERIES -->
-    <section class="galleries">
+    <section class="galleries section">
         <h2>Our Camping Sites</h2>
         <div class="images__container">
             <div class="panel"
