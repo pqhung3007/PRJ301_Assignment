@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/web/campsites.jsp</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/web/components/footer.jsp</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/web/camp.jsp</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/src/java/dao/ReservationDetailDAO.java</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/src/java/controller/AddNewCampController.java</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/src/java/controller/CampItemController.java</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/src/java/dao/CampDAO.java</file>
-            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/src/java/controller/CheckoutController.java</file>
+            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/src/java/filter/AuthoFilter.java</file>
+            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/web/js/app.js</file>
+            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/web/css/style.css</file>
+            <file>file:/C:/Users/Administrator/Dropbox/PC/Documents/NetBeansProjects/PRJ301_Project/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>

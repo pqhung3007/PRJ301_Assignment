@@ -19,6 +19,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Account {
+    public static final String ADMIN = "Admin";
+    public static final String USER = "User";
     private int id;
     private String username;
     private String password;
@@ -26,4 +28,5 @@ public class Account {
     private String address;
     private String email;
     private String phone;
+    private String role;
 }
