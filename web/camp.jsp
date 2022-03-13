@@ -11,7 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>JSP Page</title>
+        <link rel="shortcut icon" type="image/png" href="assets/images/camping.png">
+        <title>${camp.name}</title>
     </head>
     <body>
         <%@include file="components/navBar.jsp" %>
@@ -22,15 +23,10 @@
                     <div class="col-md-6">
                         <form action="book">
                             <h1 class="display-5 fw-bolder">${camp.name}</h1>
-                            <div class="fs-5 mb-5">
-                                <span>${camp.price}</span>
+                            <div class="fs-5 mb-2">
+                                <span>Price per person: ${camp.price}$</span>
                             </div>
-                            <p class="lead">${camp.description}</p>
-                            <div class="d-flex my-2">
-                                <h3>Number of Person:</h3>
-                                <input name="person" class="form-control text-center me-3" 
-                                       id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
-                            </div>
+                            <p class="lead mb-5">${camp.description}</p>
                             <a class="btn btn-outline-success flex-shrink-0" type="button" href="add-to-booking?campId=${camp.id}">
                                 Book this camp
                             </a>

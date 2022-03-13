@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Camp Sites</title>
+        <title>Campsites</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="css/campsites.css">
         <link rel="shortcut icon" type="image/png" href="assets/images/camping.png">
@@ -18,7 +18,7 @@
     <body>
         <%@include file="components/navBar.jsp" %>
         <div class="container camp-container">
-            <h1>Our Camp Sites</h1>
+            <h1 style="font-weight: bold">Our Camp Sites</h1>
             <a href="add">Add New Camp</a>
             <ul class="categories">
                 <c:forEach items="${sessionScope.categoryList}" var="C">
@@ -53,16 +53,12 @@
 
                 <div class="row">
                     <c:forEach items="${campList}" var="cp">
-                        <div class="col-sm-6 mb-5">
+                        <div class="col-sm-6 mb-5 mt-5">
                             <div class="card">
                                 <img src="${cp.imageUrl}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h2 class="card-title">${cp.name}</h2>
                                     <p class="card-text">${cp.description}.</p>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Price per person: ${cp.price}$</li>
-                                        <li class="list-group-item">${cp.categoryId}</li>
-                                    </ul>
                                         <a href="camp?campId=${cp.id}" class="mt-4 btn btn-primary">Explore</a>
                                 </div>
                             </div>

@@ -25,6 +25,10 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
+.heading {
+    text-align: center;
+}
+
 .detail {
     display: flex;
     flex-direction: column;
@@ -54,6 +58,26 @@ h1 {
     margin: 1rem;
     position: relative;
     transition: all 500ms ease-in;
+}
+
+.cta-div {
+    display: flex;
+    justify-content: center;
+}
+
+.cta {
+    text-decoration: none;
+    background-color: #1e90ff;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
+
+.cta:hover {
+    color: #fff;
+    background-color: #1c7cdb;
+    transition: all 0.3s;
 }
 
 .panel h3 {
@@ -107,24 +131,13 @@ h1 {
     z-index: -2;
 }
 
-.hero:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-
-}
-
 .hero p {
     margin-top: 1rem;
 }
 
 .section {
-    padding: 5rem 3rem;
-    border-top: 1px solid #ddd;
+    padding: 5rem;
+    margin-top: 3rem;
     transition: transform 1s, opacity 1s;
 }
 
@@ -135,7 +148,7 @@ h1 {
 
 .slider {
     max-width: 100rem;
-    height: 30rem;
+    height: 27rem;
     margin: 0 auto;
     position: relative;
 }
@@ -144,8 +157,7 @@ h1 {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 30rem;
-
+    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,9 +175,8 @@ h1 {
 
 .slider__btn {
     position: absolute;
-    top: 50%;
+    top: 27%;
     z-index: 10;
-
     border: none;
     background: rgba(255, 255, 255, 0.7);
     font-family: inherit;
