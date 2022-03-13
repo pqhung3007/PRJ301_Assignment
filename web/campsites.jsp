@@ -20,9 +20,10 @@
         <div class="container camp-container">
             <h1 style="font-weight: bold">Our Camp Sites</h1>
             <c:if test="${sessionScope.account.role == 'Admin'}">
-                <a href="admin/add">Add New Camp</a>
+                <a href="admin/add" class="btn btn-success">Add New Camp</a>
             </c:if>
-            <ul class="categories">
+
+            <ul class="categories mt-3">
                 <c:forEach items="${sessionScope.categoryList}" var="C">
                     <li><a href="filter-category?categoryId=${C.id}">${C.name}</a></li>
                     </c:forEach>
@@ -56,21 +57,21 @@
                 <div class="row">
                     <c:forEach items="${campList}" var="cp">
                         <div class="col-sm-6 mb-5 mt-5">
-                            <div class="card">
-                                <img src="${cp.imageUrl}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="card-title">${cp.name}</h2>
-                                    <p class="card-text">${cp.description}.</p>
+                            <div class="card" onclick="location.href='camp?campId=${cp.id}'">
+                                    <img src="${cp.imageUrl}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h2 class="card-title">${cp.name}</h2>
+                                        <p class="card-text">${cp.description}.</p>
 
-                                    <div class="btn-action">
-                                        <a href="camp?campId=${cp.id}" class="btn btn-primary">Explore</a>
-                                        <c:if test="${sessionScope.account.role == 'Admin'}">
-                                            <a href="admin/delete?campId=${cp.id}" class="btn btn-danger" onclick="showAlert(${cp.id})">
-                                                <i class="fa-solid fa-trash"></i>
-                                                Delete</a>
-                                            </c:if>
+                                        <div class="btn-action">
+                                            <a href="camp?campId=${cp.id}" class="btn btn-primary">Explore</a>
+                                            <c:if test="${sessionScope.account.role == 'Admin'}">
+                                                <a href="admin/delete?campId=${cp.id}" class="btn btn-danger" onclick="showAlert(${cp.id})">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                    Delete</a>
+                                                </c:if>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </c:forEach>
