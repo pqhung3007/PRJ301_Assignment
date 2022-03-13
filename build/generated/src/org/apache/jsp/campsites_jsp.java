@@ -77,7 +77,7 @@ public final class campsites_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Camp Sites</title>\n");
+      out.write("        <title>Campsites</title>\n");
       out.write("        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/campsites.css\">\n");
       out.write("        <link rel=\"shortcut icon\" type=\"image/png\" href=\"assets/images/camping.png\">\n");
@@ -133,8 +133,8 @@ public final class campsites_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</nav>\n");
       out.write("\n");
       out.write("        <div class=\"container camp-container\">\n");
-      out.write("            <h1>Our Camp Sites</h1>\n");
-      out.write("            <a href=\"add\">Add New Camp</a>\n");
+      out.write("            <h1 style=\"font-weight: bold\">Our Camp Sites</h1>\n");
+      out.write("            <a href=\"admin/add\">Add New Camp</a>\n");
       out.write("            <ul class=\"categories\">\n");
       out.write("                ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
@@ -497,7 +497,7 @@ public final class campsites_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\n");
-          out.write("                        <div class=\"col-sm-6 mb-5\">\n");
+          out.write("                        <div class=\"col-sm-6 mb-5 mt-5\">\n");
           out.write("                            <div class=\"card\">\n");
           out.write("                                <img src=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cp.imageUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null));
