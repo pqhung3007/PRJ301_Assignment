@@ -19,7 +19,9 @@
         <%@include file="components/navBar.jsp" %>
         <div class="container camp-container">
             <h1 style="font-weight: bold">Our Camp Sites</h1>
-            <a href="admin/add">Add New Camp</a>
+            <c:if test="${sessionScope.account.role == 'Admin'}">
+                <a href="admin/add">Add New Camp</a>
+            </c:if>
             <ul class="categories">
                 <c:forEach items="${sessionScope.categoryList}" var="C">
                     <li><a href="filter-category?categoryId=${C.id}">${C.name}</a></li>
@@ -59,7 +61,15 @@
                                 <div class="card-body">
                                     <h2 class="card-title">${cp.name}</h2>
                                     <p class="card-text">${cp.description}.</p>
-                                        <a href="camp?campId=${cp.id}" class="mt-4 btn btn-primary">Explore</a>
+
+                                    <div class="btn-action">
+                                        <a href="camp?campId=${cp.id}" class="btn btn-primary">Explore</a>
+                                        <c:if test="${sessionScope.account.role == 'Admin'}">
+                                            <a href="admin/delete?campId=${cp.id}" class="btn btn-danger" onclick="showAlert(${cp.id})">
+                                                <i class="fa-solid fa-trash"></i>
+                                                Delete</a>
+                                            </c:if>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +79,16 @@
         </div>
 
         <%@include file="components/footer.jsp" %>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+        <script>
+            function showAlert(id) {
+                let option = confirm("Do you want to delete this camp?")
+                if (option === true) {
+                    window.location.href = 'admin/delete?campId=' + id;
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/3a6c73e27c.js" crossorigin="anonymous"></script>
     </body>
 </html>

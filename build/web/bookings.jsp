@@ -20,7 +20,10 @@
             <div class="container" style="min-height: 100vh">
                 <c:choose>
                     <c:when test="${sessionScope.book==null||sessionScope.book.size()==0}">
-                        <h1>List Cart is Empty</h1>
+                        <div style="margin-top: 5rem">
+                            <h1>You're currently have no booking</h1>
+                            <a class="btn btn-outline-success mt-3" href="campsites">Back to campsites</a>
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <h2>Your Booking:</h2>
@@ -62,18 +65,18 @@
                             </c:forEach>
                             </tbody>
                         </table>
-                        
+
                         <a href="checkout" class="btn btn-outline-success">Confirm Booking</a>
 
-                        </div>
-                    </c:otherwise>
-                </c:choose>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
-            </div>
-        </section>
+        </div>
+    </section>
 
 
-        <%@include file="components/footer.jsp" %>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+    <%@include file="components/footer.jsp" %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

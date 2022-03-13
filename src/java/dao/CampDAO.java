@@ -193,4 +193,16 @@ public class CampDAO {
         }
     }
 
+    public void deleteCamp(String id) {
+        String query = "delete from Camp where CampID = ?";
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
 }
