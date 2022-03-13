@@ -182,7 +182,7 @@ public class CampDAO {
                     + "           (?,?,?,?,?)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, -1);
+            ps.setInt(1, 20);
             ps.setString(2, name);
             ps.setString(3, description);
             ps.setString(4, image);

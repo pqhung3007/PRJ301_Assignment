@@ -17,6 +17,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -25,35 +27,36 @@ import model.Account;
  */
 @WebFilter(filterName = "AuthoFilter", urlPatterns = {"/admin/*"})
 public class AuthoFilter implements Filter {
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletRequest res = (HttpServletRequest) response;
+        
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
 
-        // check authentication
-        Account account = (Account) req.getSession().getAttribute("account");
-        // admin already authenticated
+
+        HttpSession session = req.getSession();
+        //Kiểm tra đăng nhập
+        Account account = (Account) session.getAttribute("account");
+
         if (account != null && account.getRole().equals(Account.ADMIN)) {
-            //
+            //cho qua
             chain.doFilter(request, response);
             return;
         }
-        req.setAttribute("error", "You do not have permission to access this");
-        req.getRequestDispatcher("login.jsp").forward(request, response);
-     
+        res.sendRedirect("http://localhost:8080/PRJ301_project/login");
+
     }
 
- @Override
-    public void destroy() {        
+    @Override
+    public void destroy() {
     }
 
-     @Override
-    public void init(FilterConfig filterConfig) {        
-       
+    @Override
+    public void init(FilterConfig filterConfig) {
+
     }
 
-
-    
 }

@@ -18,9 +18,9 @@
         
         <div class="container" style="min-height: 1000px">
             <div class="alert alert-success text-center mt-5" role="alert" >
-                Order successfully, Thank you very much...
+                Reservation made successfully, We are delighted to serve you!
                 <div class="text-center mt-2">
-                    <a class="btn btn-outline-primary" href="campsites">Continue Shopping</a>
+                    <a class="btn btn-outline-primary" href="campsites">Back to Campsites</a>
                 </div>
             </div>
         </div>

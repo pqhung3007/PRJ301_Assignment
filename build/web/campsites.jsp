@@ -19,7 +19,7 @@
         <%@include file="components/navBar.jsp" %>
         <div class="container camp-container">
             <h1 style="font-weight: bold">Our Camp Sites</h1>
-            <a href="add">Add New Camp</a>
+            <a href="admin/add">Add New Camp</a>
             <ul class="categories">
                 <c:forEach items="${sessionScope.categoryList}" var="C">
                     <li><a href="filter-category?categoryId=${C.id}">${C.name}</a></li>

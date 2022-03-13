@@ -70,7 +70,7 @@ public class AuthenFilter implements Filter {
                     return;
                 }
             }
-            res.sendRedirect("login");
+            res.sendRedirect("http://localhost:8080/PRJ301_Project/login");
         }
 
     }
