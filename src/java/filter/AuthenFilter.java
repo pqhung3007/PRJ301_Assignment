@@ -27,7 +27,7 @@ import model.Account;
  *
  * @author Administrator
  */
-@WebFilter(filterName = "AuthenFilter", urlPatterns = {"/checkout", "/admin/*", "/add"})
+@WebFilter(filterName = "AuthenFilter", urlPatterns = {"/checkout", "/admin/*", "/add", "/add-to-booking"})
 public class AuthenFilter implements Filter {
 
     @Override

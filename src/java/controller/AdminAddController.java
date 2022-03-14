@@ -35,11 +35,12 @@ public class AdminAddController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String name = request.getParameter("campName");
+        double price = Double.parseDouble(request.getParameter("price"));
         String description = request.getParameter("description");
         String image = request.getParameter("image");
         int category = Integer.parseInt(request.getParameter("category"));
         
-        new CampDAO().createNewCamp(name, description, image, category);
+        new CampDAO().createNewCamp(name, price, description, image, category);
         response.sendRedirect("../campsites");
 
     }

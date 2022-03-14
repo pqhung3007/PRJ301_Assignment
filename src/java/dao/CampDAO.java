@@ -170,11 +170,12 @@ public class CampDAO {
         return null;
     }
 
-    public void createNewCamp(String name, String description, String image, int category) {
+    public void createNewCamp(String name, double price, String description, String image, int category) {
         try {
             String query = "INSERT INTO [dbo].[Camp]\n"
                     + "           ([CampID]\n"
                     + "           ,[CampName]\n"
+                    + "           ,[Price]\n"
                     + "           ,[Description]\n"
                     + "           ,[ImageUrl]\n"
                     + "           ,[CategoryID])\n"
@@ -184,9 +185,10 @@ public class CampDAO {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, 20);
             ps.setString(2, name);
-            ps.setString(3, description);
-            ps.setString(4, image);
-            ps.setInt(5, category);
+            ps.setDouble(3, price);
+            ps.setString(4, description);
+            ps.setString(5, image);
+            ps.setInt(6, category);
             ps.executeUpdate();
 
         } catch (Exception e) {
