@@ -24,9 +24,9 @@
                         <form action="book">
                             <h1 class="display-5 fw-bolder">${camp.name}</h1>
                             <div class="fs-5 mb-2">
-                                <span>Price per person: ${camp.price}$</span>
+                                <span>Price per person: <strong> ${camp.price}$</span>
                             </div>
-                            <p class="lead mb-5">${camp.description}</p>
+                            <p class="lead mt-4">${camp.description}</p>
                             <a class="btn btn-outline-success flex-shrink-0" type="button" href="add-to-booking?campId=${camp.id}">
                                 Book this camp
                             </a>

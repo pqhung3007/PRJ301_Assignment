@@ -183,7 +183,7 @@ public class CampDAO {
                     + "           (?,?,?,?,?)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, 20);
+            ps.setInt(1, 17);
             ps.setString(2, name);
             ps.setDouble(3, price);
             ps.setString(4, description);
@@ -201,6 +201,31 @@ public class CampDAO {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateCamp(int id, String name, double price, String description, String image, int category) {
+        try {
+            String query = "UPDATE [dbo].[Camp]\n"
+                    + "   SET [CampName] = ?\n"
+                    + "      ,[Price] = ?\n"
+                    + "      ,[Description] = ?\n"
+                    + "      ,[ImageUrl] = ?\n"
+                    + "      ,[CategoryID] = ?\n"
+                    + " WHERE CampID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setDouble(2, price);
+            ps.setString(3, description);
+            ps.setString(4, image);
+            ps.setInt(5, category);
+            ps.setInt(6, id);
+            
+            System.out.println(id);
             ps.executeUpdate();
 
         } catch (Exception e) {
