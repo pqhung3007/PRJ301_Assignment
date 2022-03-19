@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .details,
 .galleries {
-  padding: 3rem 4rem;
+    padding: 3rem 4rem;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 /*CAMPSITES PAGE*/
@@ -34,6 +34,7 @@ h3 {
 .card {
     border-radius: 10px;
     border: 1px solid #ccc;
+    transition: transform 0.3s;
 }
 
 .card:hover {
