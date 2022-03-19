@@ -14,6 +14,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="css/campsites.css">
         <link rel="shortcut icon" type="image/png" href="assets/images/camping.png">
+        <style>
+            .card {
+                transition: transform 0.2s;
+            }
+        </style>
     </head>
     <body>
         <%@include file="components/navBar.jsp" %>

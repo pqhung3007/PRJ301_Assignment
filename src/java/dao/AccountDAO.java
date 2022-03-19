@@ -48,5 +48,28 @@ public class AccountDAO {
         }
         return null;
     }
-    
+
+    public void createAccount(String name, String email, String phone, String username, String password) {
+        try {
+            String query = "INSERT INTO [dbo].[Account]\n"
+                    + "           ([username]\n"
+                    + "           ,[password]\n"
+                    + "           ,[displayName]\n"
+                    + "           ,[email]\n"
+                    + "           ,[phone])\n"
+                    + "     VALUES\n"
+                    + "           (?,?,?,?,?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, name);
+            ps.setString(4, email);
+            ps.setString(5, phone);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
 }
