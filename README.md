@@ -6,9 +6,9 @@ This is my project for Java Web Application subject at FPT University. The goal 
 
 ## Screenshots
 
-[Landing Page] (https://github.com/pqhung3007/PRJ301_Assignment/blob/main/web/assets/images/landing_page.png)
+[Landing Page] (/web/assets/images/landing_page.png)
 
-[Content Page] (https://github.com/pqhung3007/PRJ301_Assignment/blob/main/web/assets/images/content_page.png)
+[Content Page] (/web/assets/images/content_page.png)
 
 ## Details
 
