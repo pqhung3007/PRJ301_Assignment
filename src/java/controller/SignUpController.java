@@ -23,7 +23,7 @@ public class SignUpController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           request.getRequestDispatcher("signup.jsp").forward(request, response);
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
     }
 
@@ -41,9 +41,16 @@ public class SignUpController extends HttpServlet {
         String phone = request.getParameter("phone");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
-        new AccountDAO().createAccount(name, email, phone, username, password);
-        request.getRequestDispatcher("redirect.jsp").forward(request, response);
+
+        int existedUsername = new AccountDAO().getExistedAccount(username);
+        System.out.println(existedUsername);
+        if (existedUsername > 0) {
+            response.sendRedirect("signup");
+            request.setAttribute("duplicated", "This username is already used");
+        } else {
+            new AccountDAO().createAccount(name, email, phone, username, password);
+            request.getRequestDispatcher("redirect.jsp").forward(request, response);
+        }
     }
 
     /**

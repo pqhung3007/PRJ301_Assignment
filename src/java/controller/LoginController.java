@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
             }
         }
 
-         // if there's acocunt in cookie, don't need to authorize again
+        // if there's acocunt in cookie, don't need to authorize again
         if (username != null && password != null) {
             Account account = new AccountDAO().login(username, password);
             if (account != null) { // valid cookie
@@ -74,7 +74,11 @@ public class LoginController extends HttpServlet {
             }
 
             request.getSession().setAttribute("account", account);
-            response.sendRedirect("campsites");
+            if (account.getRole().equals(Account.ADMIN)) {
+                response.sendRedirect("dashboard");
+            } else {
+                response.sendRedirect("campsites");
+            }
         } else {
             request.setAttribute("error", "Username or password invalid");
             request.getRequestDispatcher("login.jsp").forward(request, response);

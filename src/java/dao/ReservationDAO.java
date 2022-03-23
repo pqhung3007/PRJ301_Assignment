@@ -10,11 +10,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Booking;
 import model.Reservation;
+import model.ReservationDetail;
 
 /**
  *
@@ -47,6 +50,52 @@ public class ReservationDAO {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+
+    public List<Reservation> getAllRes() {
+        List<Reservation> list = new ArrayList<>();
+        try {
+            String sql = "select * from Reservations";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Reservation reservation = Reservation.builder()
+                        .id(rs.getInt(1))
+                        .accountId(rs.getInt(2))
+                        .totalPrice(rs.getDouble(3))
+                        .note(rs.getString(4))
+                        .createdDate(rs.getString(5))
+                        .customerId(rs.getInt(6))
+                        .build();
+                list.add(reservation);
+            }
+        } catch (Exception ex) {
+        }
+        return list;
+    }
+
+    public List<ReservationDetail> getAllReDe() {
+        List<ReservationDetail> list = new ArrayList<>();
+        try {
+            String sql = "select * from ReservationDetail";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ReservationDetail reDetail = ReservationDetail.builder()
+                        .id(rs.getInt("id"))
+                        .reservationId(rs.getInt("reservation_id"))
+                        .campName(rs.getString("campName"))
+                        .campImage(rs.getString("campImage"))
+                        .campPrice(rs.getDouble("campPrice"))
+                        .numberOfPerson(rs.getInt("numberOfPerson"))
+                        .build();
+                list.add(reDetail);
+            }
+        } catch (Exception ex) {
+        }
+        return list;
     }
 
 }

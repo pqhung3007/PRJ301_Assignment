@@ -45,6 +45,7 @@
                     </c:when>
                     <c:otherwise>
                         <a href="login" class="btn btn-outline-primary ms-lg-2">Login</a>
+                        <a href="signup" class="btn btn-outline-success ms-lg-2">Signup</a>
                     </c:otherwise>
                 </c:choose>
             </div>

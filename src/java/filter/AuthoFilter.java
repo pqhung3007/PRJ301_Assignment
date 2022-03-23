@@ -25,7 +25,7 @@ import model.Account;
  *
  * @author Administrator
  */
-@WebFilter(filterName = "AuthoFilter", urlPatterns = {"/admin/*"})
+@WebFilter(filterName = "AuthoFilter", urlPatterns = {"/admin/*", "/dashboard"})
 public class AuthoFilter implements Filter {
 
     @Override
@@ -46,7 +46,7 @@ public class AuthoFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
-        res.sendRedirect("http://localhost:8080/PRJ301_project/login");
+        res.sendRedirect("http://localhost:8080/PRJ301_Project/login");
 
     }
 

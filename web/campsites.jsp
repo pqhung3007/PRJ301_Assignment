@@ -25,9 +25,9 @@
         <div class="container camp-container">
             <h1 style="font-weight: bold">Our Camp Sites</h1>
             <c:if test="${sessionScope.account.role == 'Admin'}">
-                <a href="admin/add" class="btn btn-success">
+<!--                <a href="admin/add" class="btn btn-success">
                     <i class="fa-solid fa-circle-plus"></i>
-                    Add New Camp</a>
+                    Add New Camp</a>-->
                 </c:if>
 
             <ul class="categories mt-3">
@@ -75,14 +75,14 @@
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                             Explore</a>
                                             <c:if test="${sessionScope.account.role == 'Admin'}">
-                                            <div>
+<!--                                            <div>
                                                 <a href="admin/update?campId=${cp.id}" class="btn btn-warning">
                                                     <i class="fa-solid fa-pen"></i>
                                                     Update</a>
                                                 <a href="admin/delete?campId=${cp.id}" class="btn btn-danger" onclick="showAlert(${cp.id})">
                                                     <i class="fa-solid fa-trash"></i>
                                                     Delete</a>
-                                            </div>
+                                            </div>-->
                                         </c:if>
                                     </div>
                                 </div>
@@ -95,14 +95,7 @@
 
         <%@include file="components/footer.jsp" %>
 
-        <script>
-            function showAlert(id) {
-                let option = confirm("Do you want to delete this camp?")
-                if (option === true) {
-                    window.location.href = 'admin/delete?campId=' + id;
-                }
-            }
-        </script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/3a6c73e27c.js" crossorigin="anonymous"></script>
     </body>

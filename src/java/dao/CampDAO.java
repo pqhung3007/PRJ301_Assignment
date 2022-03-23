@@ -180,10 +180,10 @@ public class CampDAO {
                     + "           ,[ImageUrl]\n"
                     + "           ,[CategoryID])\n"
                     + "     VALUES\n"
-                    + "           (?,?,?,?,?)";
+                    + "           (?,?,?,?,?, ?)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, 17);
+            ps.setInt(1, 16);
             ps.setString(2, name);
             ps.setDouble(3, price);
             ps.setString(4, description);
